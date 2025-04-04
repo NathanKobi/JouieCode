@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Math Phrase Translator</title>
+
+    <style>
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+
+            background-color: #0d1117; /* GitHub Dark Background */
+
+            color: #c9d1d9; /* GitHub Dark Text */
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 100vh;
+
+            margin: 0;
+
+        }
+
+
+        #translator-container {
+
+            background-color: #161b22; /* GitHub Dark Container Background */
+
+            padding: 40px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+            width: 90%;
+
+            max-width: 600px;
+
+            text-align: center;
+
+        }
+
+
+        h1 {
+
+            color: #58a6ff; /* GitHub Link Blue */
+
+            margin-bottom: 30px;
+
+            font-size: 2.8em;
+
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+
+        }
+
+
+        p {
+
+            font-size: 1.2em;
+
+            margin-bottom: 30px;
+
+            line-height: 1.6;
+
+        }
+
+
+        select, button {
+
+            padding: 14px 22px;
+
+            margin-bottom: 25px;
+
+            border-radius: 6px;
+
+            border: 1px solid #30363d; /* GitHub Border */
+
+            font-size: 1.1em;
+
+            width: 85%;
+
+            max-width: 350px;
+
+            box-sizing: border-box;
+
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        }
+
+
+        select {
+
+            background-color: #0d1117; /* GitHub Dark Background */
+
+            color: #c9d1d9;
+
+        }
+
+
+        button {
+
+            background-color: #238636; /* GitHub Green Button */
+
+            color: #fff;
+
+            cursor: pointer;
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        }
+
+
+        button:hover {
+
+            background-color: #2ea043; /* GitHub Darker Green Button */
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+
+        }
+
+
+        #result-container {
+
+            margin-top: 40px;
+
+            padding: 30px;
+
+            border-radius: 8px;
+
+            background-color: #161b22; /* GitHub Dark Container Background */
+
+            border: 1px solid #30363d;
+
+            text-align: left;
+
+        }
+
+
+        #result-container h2 {
+
+            color: #58a6ff;
+
+            margin-bottom: 15px;
+
+            font-size: 1.6em;
+
+        }
+
+
+        #result-container p {
+
+            margin-bottom: 10px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* Responsive adjustments */
+
+        @media (max-width: 480px) {
+
+            h1 { font-size: 2.2em; }
+
+            p, select, button { font-size: 1em; }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="translator-container">
+
+        <h1>Math Phrase Translator</h1>
+
+        <p>Explore mathematical phrases and their symbolic representations.</p>
+
+        <select id="phraseSelector">
+
+            <option value="">--Select a phrase--</option>
+
+            <option value="addition">plus</option>
+
+            <option value="addition">the sum of</option>
+
+            <option value="addition">increased by</option>
+
+            <option value="subtraction">minus</option>
+
+            <option value="subtraction">subtracted from</option>
+
+            <option value="multiplication">times</option>
+
+            <option value="multiplication">product of</option>
+
+            <option value="division">divided by</option>
+
+            <option value="division">quotient of</option>
+
+        </select>
+
+        <button onclick="translatePhrase()">Translate</button>
+
+        <div id="result-container"></div>
+
+    </div>
+
+
+    <script>
+
+        function translatePhrase() {
+
+            let selector = document.getElementById("phraseSelector");
+
+            let value = selector.value;
+
+            let text = selector.options[selector.selectedIndex].text;
+
+            let resultContainer = document.getElementById("result-container");
+
+            let expression = "";
+
+            let example = "";
+
+
+            switch (value) {
+
+                case "addition":
+
+                    expression = "a + b";
+
+                    example = "5 + 3 = 8";
+
+                    break;
+
+                case "subtraction":
+
+                    expression = "a - b";
+
+                    example = "9 - 4 = 5";
+
+                    break;
+
+                case "multiplication":
+
+                    expression = "a × b";
+
+                    example = "6 × 2 = 12";
+
+                    break;
+
+                case "division":
+
+                    expression = "a ÷ b";
+
+                    example = "8 ÷ 2 = 4";
+
+                    break;
+
+                default:
+
+                    resultContainer.innerHTML = "";
+
+                    return;
+
+            }
+
+
+            resultContainer.innerHTML = `<h2>${text}</h2><p>Expression: ${expression}</p><p>Example: ${example}</p>`;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
